@@ -12,13 +12,13 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <h4 className="font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Submit a Restaurant</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-            </ul>
-          </div>
+  <h4 className="font-bold mb-4">Quick Links</h4>
+  <ul className="space-y-2 text-gray-400">
+    <li><a href="/submit" className="hover:text-white transition-colors">Submit a Restaurant</a></li>
+    <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
+    <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+  </ul>
+</div>
           <div>
             <h4 className="font-bold mb-4">Popular Dishes</h4>
             <ul className="space-y-2 text-gray-400">
