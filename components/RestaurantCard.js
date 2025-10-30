@@ -3,7 +3,7 @@ import { MapPin, Phone, Globe, Star, Utensils } from 'lucide-react';
 
 export default function RestaurantCard({ restaurant }) {
   return (
-    <Link href={`/restaurant/${restaurant.id}`}>
+    <Link href={`/restaurant/${restaurant.id}`} className="block">
       <div className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-1 cursor-pointer">
         <div className="relative">
           <img 
