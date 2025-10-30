@@ -78,37 +78,12 @@ export default function RestaurantCard({ restaurant }) {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2">
             {restaurant.cuisine_tags?.slice(0, 3).map(tag => (
               <span key={tag} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium">
                 {tag}
               </span>
             ))}
-          </div>
-
-          <div className="flex gap-2">
-            <a 
-              href={restaurant.google_maps_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="flex-1 flex items-center justify-center bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm"
-            >
-              <MapPin size={16} className="mr-1" />
-              Map
-            </a>
-            {restaurant.website && (
-              <a 
-                href={restaurant.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="flex-1 flex items-center justify-center bg-gradient-to-r from-red-600 to-amber-600 text-white py-2 rounded-lg hover:from-red-700 hover:to-amber-700 transition-colors font-medium text-sm"
-              >
-                <Globe size={16} className="mr-1" />
-                Website
-              </a>
-            )}
           </div>
         </div>
       </div>
