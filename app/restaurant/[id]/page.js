@@ -32,7 +32,7 @@ export default async function RestaurantPage({ params }) {
             <div className="bg-amber-50 rounded-xl p-6 mb-6">
               <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
                 <Utensils size={24} className="text-red-600" />
-                Signature Dishes
+                Specialty Dishes
               </h2>
               {restaurant.signature_dishes.map((dish, i) => (
                 <div key={i} className="mb-3 pb-3 border-b last:border-0">

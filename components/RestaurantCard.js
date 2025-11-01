@@ -42,7 +42,7 @@ export default function RestaurantCard({ restaurant }) {
             <div className="mb-4 bg-gradient-to-br from-amber-50 to-red-50 rounded-xl p-4 border border-amber-200">
               <div className="flex items-center gap-2 mb-3">
                 <Utensils size={16} className="text-red-600" />
-                <h4 className="font-bold text-gray-800 text-sm">Signature Dishes</h4>
+                <h4 className="font-bold text-gray-800 text-sm">Specialty Dishes</h4>
               </div>
               <div className="space-y-2">
                 {restaurant.signature_dishes.map((dish, idx) => (
@@ -59,7 +59,6 @@ export default function RestaurantCard({ restaurant }) {
                           </span>
                         )}
                       </p>
-                      <p className="text-xs text-gray-600">{dish.description}</p>
                     </div>
                   </div>
                 ))}
