@@ -22,7 +22,7 @@ export default function SubmitPage() {
   });
 
   const [signatureDishes, setSignatureDishes] = useState([
-    { name: '', description: '', popular: false }
+    { name: '', popular: false }
   ]);
 
   const [submitted, setSubmitted] = useState(false);
@@ -43,7 +43,7 @@ export default function SubmitPage() {
   };
 
   const addDish = () => {
-    setSignatureDishes([...signatureDishes, { name: '', description: '', popular: false }]);
+    setSignatureDishes([...signatureDishes, { name: '', popular: false }]);
   };
 
   const removeDish = (index) => {
@@ -58,8 +58,8 @@ export default function SubmitPage() {
     setError('');
 
     // Validate required fields
-    if (!formData.name || !formData.city || !formData.state) {
-      setError('Please fill in all required fields (name, city, state)');
+    if (!formData.name || !formData.city || !formData.state || !formData.submitter_name || !formData.submitter_email) {
+      setError('Please fill in all required fields');
       setLoading(false);
       return;
     }
@@ -119,9 +119,9 @@ export default function SubmitPage() {
                   phone: '', website: '', category: 'restaurant', description: '',
                   submitter_name: '', submitter_email: ''
                 });
-                setSignatureDishes([{ name: '', description: '', popular: false }]);
+                setSignatureDishes([{ name: '', popular: false }]);
               }}
-              className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 font-semibold"
+              className="bg-pinoy-red text-white px-6 py-3 rounded-lg hover:bg-pinoy-red/90 font-semibold"
             >
               Submit Another
             </button>
@@ -138,20 +138,20 @@ export default function SubmitPage() {
       
       <main className="max-w-3xl mx-auto px-4 py-8">
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Submit a Restaurant</h1>
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">Add a Listing</h1>
           <p className="text-lg text-gray-600 mb-6">
-            Know a great Filipino restaurant? Help grow our directory by submitting it here!
+            Know a great restaurant? Help grow our directory by submitting it here!
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Restaurant Info */}
             <div className="border-b pb-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Restaurant Information</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Business Information</h2>
               
               <div className="space-y-4">
                 <div>
                   <label className="block font-medium text-gray-700 mb-2">
-                    Restaurant Name <span className="text-red-600">*</span>
+                    Business Name <span className="text-pinoy-red">*</span>
                   </label>
                   <input
                     type="text"
@@ -159,8 +159,8 @@ export default function SubmitPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                    placeholder="e.g., Manila Kitchen"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
+                    placeholder="e.g., Manila Kitchen, Tindahan Grocery, etc."
                   />
                 </div>
 
@@ -170,7 +170,7 @@ export default function SubmitPage() {
                     name="category"
                     value={formData.category}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                   >
                     {CATEGORIES.filter(c => c.value !== 'all').map(cat => (
                       <option key={cat.value} value={cat.value}>
@@ -187,8 +187,8 @@ export default function SubmitPage() {
                     value={formData.description}
                     onChange={handleChange}
                     rows={3}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                    placeholder="Brief description of the restaurant"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
+                    placeholder="Brief description of the business"
                   />
                 </div>
 
@@ -199,7 +199,7 @@ export default function SubmitPage() {
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                     placeholder="Street address"
                   />
                 </div>
@@ -207,7 +207,7 @@ export default function SubmitPage() {
                 <div className="grid md:grid-cols-3 gap-4">
                   <div>
                     <label className="block font-medium text-gray-700 mb-2">
-                      City <span className="text-red-600">*</span>
+                      City <span className="text-pinoy-red">*</span>
                     </label>
                     <input
                       type="text"
@@ -215,22 +215,22 @@ export default function SubmitPage() {
                       value={formData.city}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                     />
                   </div>
 
                   <div>
                     <label className="block font-medium text-gray-700 mb-2">
-                      State <span className="text-red-600">*</span>
+                      State <span className="text-pinoy-red">*</span>
                     </label>
                     <select
                       name="state"
                       value={formData.state}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                     >
-                      <option value="" className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 text-gray-800">Select State</option>
+                      <option value="">Select State</option>
                       {US_STATES.map(state => (
                         <option key={state.code} value={state.code}>{state.name}</option>
                       ))}
@@ -244,7 +244,7 @@ export default function SubmitPage() {
                       name="zip_code"
                       value={formData.zip_code}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                     />
                   </div>
                 </div>
@@ -257,7 +257,7 @@ export default function SubmitPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                       placeholder="(555) 123-4567"
                     />
                   </div>
@@ -269,7 +269,7 @@ export default function SubmitPage() {
                       name="website"
                       value={formData.website}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                       placeholder="https://..."
                     />
                   </div>
@@ -277,17 +277,17 @@ export default function SubmitPage() {
               </div>
             </div>
 
-            {/* Signature Dishes */}
+            {/* Specialty Dishes */}
             <div className="border-b pb-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-                  <Utensils size={24} className="text-red-600" />
-                  Signature Dishes
+                  <Utensils size={24} className="text-pinoy-red" />
+                  Specialty Dishes
                 </h2>
                 <button
                   type="button"
                   onClick={addDish}
-                  className="flex items-center gap-2 text-red-600 hover:text-red-700 font-medium"
+                  className="flex items-center gap-2 text-pinoy-red hover:text-pinoy-red/90 font-medium"
                 >
                   <Plus size={20} />
                   Add Dish
@@ -301,7 +301,7 @@ export default function SubmitPage() {
                       <button
                         type="button"
                         onClick={() => removeDish(index)}
-                        className="absolute top-2 right-2 text-gray-400 hover:text-red-600"
+                        className="absolute top-2 right-2 text-gray-400 hover:text-pinoy-red"
                       >
                         <X size={20} />
                       </button>
@@ -313,21 +313,14 @@ export default function SubmitPage() {
                         value={dish.name}
                         onChange={(e) => handleDishChange(index, 'name', e.target.value)}
                         placeholder="Dish name (e.g., Chicken Adobo)"
-                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                      />
-                      <textarea
-                        value={dish.description}
-                        onChange={(e) => handleDishChange(index, 'description', e.target.value)}
-                        placeholder="Brief description"
-                        rows={2}
-                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                        className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                       />
                       <label className="flex items-center gap-2">
                         <input
                           type="checkbox"
                           checked={dish.popular}
                           onChange={(e) => handleDishChange(index, 'popular', e.target.checked)}
-                          className="w-4 h-4 text-red-600"
+                          className="w-4 h-4 text-pinoy-red"
                         />
                         <span className="text-sm text-gray-700">Mark as most popular dish</span>
                       </label>
@@ -339,28 +332,34 @@ export default function SubmitPage() {
 
             {/* Submitter Info */}
             <div className="border-b pb-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Your Information (Optional)</h2>
+              <h2 className="text-2xl font-bold text-gray-800 mb-4">Your Information</h2>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block font-medium text-gray-700 mb-2">Your Name</label>
+                  <label className="block font-medium text-gray-700 mb-2">
+                    Your Name <span className="text-pinoy-red">*</span>
+                  </label>
                   <input
                     type="text"
                     name="submitter_name"
                     value={formData.submitter_name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    required
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-medium text-gray-700 mb-2">Your Email</label>
+                  <label className="block font-medium text-gray-700 mb-2">
+                    Your Email <span className="text-pinoy-red">*</span>
+                  </label>
                   <input
                     type="email"
                     name="submitter_email"
                     value={formData.submitter_email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                    required
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red"
                     placeholder="We'll notify you when approved"
                   />
                 </div>
@@ -376,12 +375,12 @@ export default function SubmitPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-red-600 to-amber-600 text-white py-4 rounded-lg hover:from-red-700 hover:to-amber-700 transition-colors font-bold text-lg flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full bg-pinoy-red text-white py-4 rounded-lg hover:bg-pinoy-red/90 transition-colors font-bold text-lg flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {loading ? 'Submitting...' : (
                 <>
                   <Send size={20} />
-                  Submit Restaurant
+                  Submit Listing
                 </>
               )}
             </button>

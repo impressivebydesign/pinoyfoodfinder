@@ -48,7 +48,7 @@ export default function SearchFilters({ initialRestaurants }) {
     return grouped;
   }, [restaurants]);
 
-  const statName = selectedState ? US_STATES.find(s => s.code === selectedState)?.name : '';
+  const statName = selectedState || '';
 
   return (
     <>
@@ -61,7 +61,7 @@ export default function SearchFilters({ initialRestaurants }) {
               placeholder="Search name, city, or dish..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all"
+              className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red transition-all"
             />
           </div>
 
@@ -70,7 +70,7 @@ export default function SearchFilters({ initialRestaurants }) {
             <select
               value={selectedDish}
               onChange={(e) => setSelectedDish(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 appearance-none transition-all bg-white"
+              className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red appearance-none transition-all bg-white"
             >
               <option value="">All Dishes</option>
               {allDishes.map(dish => (
@@ -85,12 +85,12 @@ export default function SearchFilters({ initialRestaurants }) {
             <select
               value={selectedState}
               onChange={(e) => setSelectedState(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 appearance-none transition-all bg-white"
+              className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red appearance-none transition-all bg-white"
             >
               <option value="">All States</option>
               {US_STATES.map(state => (
-                <option key={state.code} value={state.code}>
-                  {state.name} {restaurantsByState[state.code] ? `(${restaurantsByState[state.code]})` : ''}
+                <option key={state.code} value={state.name}>
+                  {state.name} {restaurantsByState[state.name] ? `(${restaurantsByState[state.name]})` : ''}
                 </option>
               ))}
             </select>
@@ -102,7 +102,7 @@ export default function SearchFilters({ initialRestaurants }) {
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 appearance-none transition-all bg-white"
+              className="w-full pl-10 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-pinoy-red focus:border-pinoy-red appearance-none transition-all bg-white"
             >
               {CATEGORIES.map(cat => (
                 <option key={cat.value} value={cat.value}>
@@ -118,8 +118,8 @@ export default function SearchFilters({ initialRestaurants }) {
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-3xl font-bold text-gray-800">
           {filteredRestaurants.length} {filteredRestaurants.length === 1 ? 'Place' : 'Places'}
-          {statName && <span className="text-red-600"> in {statName}</span>}
-          {selectedDish && <span className="text-red-600"> serving {selectedDish}</span>}
+          {statName && <span className="text-pinoy-red"> in {statName}</span>}
+          {selectedDish && <span className="text-pinoy-red"> serving {selectedDish}</span>}
         </h2>
         {(selectedState || searchTerm || selectedCategory !== 'all' || selectedDish) && (
           <button
@@ -129,7 +129,7 @@ export default function SearchFilters({ initialRestaurants }) {
               setSelectedCategory('all');
               setSelectedDish('');
             }}
-            className="text-red-600 hover:text-red-700 font-medium underline"
+            className="text-pinoy-red hover:text-pinoy-red/90 font-medium underline"
           >
             Clear Filters
           </button>

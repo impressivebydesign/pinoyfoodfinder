@@ -1,24 +1,52 @@
+import Logo from './Logo';
+import Link from 'next/link';
+import { Plus } from 'lucide-react';
+
 export default function Header({ stats }) {
   return (
-    <header className="bg-gradient-to-r from-red-600 via-red-700 to-amber-600 text-white shadow-xl">
-      <div className="max-w-7xl mx-auto px-4 py-10">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="text-5xl">🇵🇭</span>
-          <a href="/"><h1 className="text-5xl font-bold">PinoyFoodFinder</h1></a>
-        </div>
-        <p className="text-amber-100 text-xl mb-2">
-          Discover authentic Filipino cuisine across America
-        </p>
-        <p className="text-amber-200 text-sm">
-          ✨ Now featuring signature dishes at every location
-        </p>
-        <div className="mt-4 flex gap-4 text-sm">
-          <div className="bg-white/20 px-4 py-2 rounded-lg">
-            <span className="font-bold">{stats.totalRestaurants}</span> Locations
-          </div>
-          <div className="bg-white/20 px-4 py-2 rounded-lg">
-            <span className="font-bold">{stats.totalStates}</span> States
-          </div>
+    <header className="bg-white shadow-md">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="flex items-center justify-between">
+          {/* Left: Logo */}
+          <Link href="/" className="flex-shrink-0">
+            <Logo className="h-24 w-auto hover:opacity-90 transition-opacity" />
+          </Link>
+
+          {/* Right: Navigation */}
+          <nav className="flex items-center gap-6">
+            {/* Location Link */}
+            <Link 
+              href="#location" 
+              className="px-4 py-2 text-gray-700 hover:text-pinoy-blue font-medium transition-colors cursor-pointer"
+            >
+              Location
+            </Link>
+
+            {/* Dishes Link */}
+            <Link 
+              href="#dishes" 
+              className="px-4 py-2 text-gray-700 hover:text-pinoy-blue font-medium transition-colors cursor-pointer"
+            >
+              Dishes
+            </Link>
+
+            {/* Categories Link */}
+            <Link 
+              href="#categories" 
+              className="px-4 py-2 text-gray-700 hover:text-pinoy-blue font-medium transition-colors cursor-pointer"
+            >
+              Categories
+            </Link>
+
+          {/* Add Listing Button */}
+        <Link 
+  href="/submit" 
+  className="flex items-center gap-2 bg-pinoy-yellow hover:bg-pinoy-yellow/90 text-gray-900 px-6 py-2 rounded-full font-bold transition-colors shadow-md hover:shadow-lg"
+>
+  <Plus size={20} />
+  Add Listing
+</Link>
+          </nav>
         </div>
       </div>
     </header>
